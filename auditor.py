@@ -7,11 +7,12 @@ class SQLAuditor:
         try:
             with open(file_path, 'r') as f:
                 self.sql_content = f.read()
-            print(f"--- File '{file_path}' loaded successfully ---")
+            self.reports = [] 
+            self.total_issues = 0  # Added this to keep track of total errors found
+            print(f"--- Loaded SQL File: '{file_path}' ---")
         except FileNotFoundError:
-            print(f"Error: Could not find the file '{file_path}'")
+            print(f"Error: I couldn't find the file '{file_path}'. Check the path!")
             sys.exit(1)
-
 # This part runs when we call the script from the terminal
 if __name__ == "__main__":
     # If the user forgot to provide a filename, show them how to use it
